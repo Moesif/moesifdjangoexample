@@ -39,4 +39,4 @@ MOESIF_MIDDLEWARE = {
 
 7. See `urls.py` for some urls that you can hit the server with
 (e.g. `http://localhost:8000/users`), and the data
-should be captured in the corresponding moesif account of the application id.
+should be captured in the corresponding Moesif account of the application id.
