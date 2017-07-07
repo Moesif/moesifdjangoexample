@@ -11,8 +11,7 @@ on the quick start [tutorials of Django](https://docs.djangoproject.com/en/1.11/
 ## Key files
 
 moesifdjango's [github readme](https://github.com/Moesif/moesifdjango) already documented
-the steps for setup Moesif Django, but below are the key files that modified from
-their example.
+the steps for setup Moesif Django. But here is the key file where the Moesif integration is added:
 
 - `mysite/settings.py` added Moesif middleware related settings.
 
