@@ -132,20 +132,26 @@ def should_skip(req, res):
         return False
 
 def mask_event(eventmodel):
-    print("mask event model is called")
     return eventmodel
 
 def get_token(req, res):
-    print("get_token is called")
     return "token is blah blah blah"
 
+def get_metadata(req, res):
+    return {
+        'foo': 'python1',
+        'bar': [1, 2, 3],
+    }
+
+
 MOESIF_MIDDLEWARE = {
-    'APPLICATION_ID': 'your application id from moesif',
+    'APPLICATION_ID': 'your application id goes here',
     'LOCAL_DEBUG': True,
     'IDENTIFY_USER': identifyUser,
     'GET_SESSION_TOKEN': get_token,
     'SKIP': should_skip,
     'MASK_EVENT_MODEL': mask_event,
+    'GET_METADATA': get_metadata,
 }
 
 # Internationalization
