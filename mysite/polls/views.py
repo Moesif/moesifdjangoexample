@@ -3,8 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 from django.template import loader
 from django.urls import reverse
-
 from .models import Question, Choice
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 # Create your views here.
 def index(request):
