@@ -3,9 +3,7 @@
 
 README.rst
 
-*.sqlite3
 *.pyc
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
