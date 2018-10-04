@@ -121,10 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 def identifyUser(req, res):
     return 'abc_user'
 
-def get_token(req, res):
-    print("get_token is called")
-    return "token is blah blah blah"
-
 def should_skip(req, res):
     print("should skip is called")
     print("request url is")
@@ -157,7 +153,8 @@ MOESIF_MIDDLEWARE = {
     'SKIP': should_skip,
     'MASK_EVENT_MODEL': mask_event,
     'GET_METADATA': get_metadata,
-    'USE_CELERY': False
+    'USE_CELERY': False,
+    'CAPTURE_OUTGOING_REQUESTS': False
 }
 
 # Internationalization
