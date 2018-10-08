@@ -144,6 +144,11 @@ def get_metadata(req, res):
         'bar': [1, 2, 3],
     }
 
+def get_metadata_outgoing(req, res):
+    return {
+        'foo': 'python1 outgoing',
+        'bar': [1, 2, 3],
+    }
 
 MOESIF_MIDDLEWARE = {
     'APPLICATION_ID': 'your application id goes here',
@@ -151,6 +156,7 @@ MOESIF_MIDDLEWARE = {
     'IDENTIFY_USER': identifyUser,
     'GET_SESSION_TOKEN': get_token,
     'SKIP': should_skip,
+    'GET_METADATA_OUTGOING': get_metadata_outgoing,
     'MASK_EVENT_MODEL': mask_event,
     'GET_METADATA': get_metadata,
     'USE_CELERY': False,
