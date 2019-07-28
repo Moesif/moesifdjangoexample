@@ -47,25 +47,12 @@ the `moesifdjango` SDK can also take advantage of the benefits. Do the following
 
 1. Install Redis by, `pip install -U "celery[redis]"`
 
+*Please Note:* If you're using Celery 3.1 or earlier, install celery and redis with `pip install celery==3.1.25` and `pip install redis==2.10.6`
+
 2. If you plan to use celery as the backend of asynchronous delivered logged requests,
 you also need to add `moesifdjango` to your `INSTALLED_APPS`
 
-3. Install django-celery by, `pip install django-celery`
-
-  To enable `django-celery` for your project you need to add `djcelery` to `INSTALLED_APPS`:
-
-  ```
-  INSTALLED_APPS += ('djcelery', )
-  ```
-
-  then add the following lines to your settings.py:
-
-  ```
-  import djcelery
-  djcelery.setup_loader()
-  ```
-
-4. Be sure to set the `USE_CELERY` to `True`
+3. Be sure to set the `USE_CELERY` to `True`
 
   ```
   MOESIF_MIDDLEWARE = {

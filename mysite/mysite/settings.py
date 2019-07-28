@@ -45,16 +45,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'moesifdjango',
 ]
 
+# Enable these if you're using Django 1.9
+# MIDDLEWARE_CLASSES = [
+#     'moesifdjango.middleware_pre19.MoesifMiddlewarePre19',
+#     'django.middleware.gzip.GZipMiddleware',
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
+# Enable these if you're using Django 1.10 or above
 MIDDLEWARE = [
-    'moesifdjango.middleware.moesif_middleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'moesifdjango.middleware.moesif_middleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -119,7 +134,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 def identifyUser(req, res):
-    return 'abc_user'
+    print('Identify user is called')
+    return 'testpythonapiuser'
+
+def identifyCompany(req, res):
+    print('Identify company is called')
+    return 'testpythonapicompany'
+
+def identifyUserOutgoing(req, res):
+    print('Identify user is called')
+    return 'test_outgoing'
+
+def identifyCompanyOutgoing(req, res):
+    print('Identify company is called')
+    return 'company_outgoing'
 
 def should_skip(req, res):
     print("should skip is called")
@@ -152,15 +180,23 @@ def get_metadata_outgoing(req, res):
 
 MOESIF_MIDDLEWARE = {
     'APPLICATION_ID': 'your application id goes here',
-    'LOCAL_DEBUG': True,
+    'LOCAL_DEBUG': False,
     'IDENTIFY_USER': identifyUser,
+    'IDENTIFY_COMPANY': identifyCompany,
+    'LOG_BODY': True,
     'GET_SESSION_TOKEN': get_token,
     'SKIP': should_skip,
-    'GET_METADATA_OUTGOING': get_metadata_outgoing,
+    'SKIP_OUTGOING': should_skip,
+    'IDENTIFY_USER_OUTGOING': identifyUserOutgoing,
+    'IDENTIFY_COMPANY_OUTGOING': identifyCompanyOutgoing,
     'MASK_EVENT_MODEL': mask_event,
     'GET_METADATA': get_metadata,
+    'GET_METADATA_OUTGOING': get_metadata,
+    'CAPTURE_OUTGOING_REQUESTS': False,
     'USE_CELERY': False,
-    'CAPTURE_OUTGOING_REQUESTS': False
+    'CELERY_BROKER_URL': BROKER_URL,
+    'BATCH_SIZE': 25,
+    'DISABLE_TRANSACTION_ID' : False
 }
 
 # Internationalization
