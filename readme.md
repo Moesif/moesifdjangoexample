@@ -2,7 +2,7 @@
 
 Django is a web application framework that many developers to serve APIs.
 
-[Moesif](https://www.moesif.com) is an API analyatics platform. [moesifdjango](https://github.com/Moesif/moesifdjango)
+[Moesif](https://www.moesif.com) is an API analyatics and monitorin platform. [moesifdjango](https://github.com/Moesif/moesifdjango)
 is a middleware that makes integration with Moesif easy for Django based applications.
 
 This is an example of django application with Moesif integrated. This example is based
@@ -25,16 +25,26 @@ the steps for setup Moesif Django. But here is the key file where the Moesif int
 
 4. Install Django Rest Framework by, `pip install djangorestframework`
 
-5. Be sure to edit the `mysite/setting.py` to change the application id to your
-application id obtained from Moesif.
+5. Be sure to edit the `mysite/setting.py` to add your Moesif application id.
 
-  ```
+  ```python
   MOESIF_MIDDLEWARE = {
       'APPLICATION_ID': 'your application id from moesif',
   }
   ```
+  
+Your Moesif Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
+After signing up for a Moesif account, your Moesif Application Id will be displayed during the onboarding steps. 
 
-6. `python manage.py runserver`
+You can always find your Moesif Application Id at any time by logging 
+into the [_Moesif Portal_](https://www.moesif.com/), click on the top right menu,
+and then clicking _Installation_.
+
+6. Run the service:
+
+```bash
+python manage.py runserver
+```
 
 7. See `urls.py` for some urls that you can hit the server with
 (e.g. `http://localhost:8000/users`), and the data
@@ -54,7 +64,7 @@ you also need to add `moesifdjango` to your `INSTALLED_APPS`
 
 3. Be sure to set the `USE_CELERY` to `True`
 
-  ```
+  ```python
   MOESIF_MIDDLEWARE = {
       'USE_CELERY': True
   }
