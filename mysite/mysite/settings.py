@@ -133,70 +133,50 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-def identifyUser(req, res):
-    print('Identify user is called')
-    return 'testpythonapiuser'
+def identify_user(req, res):
+    # Your custom code that returns a user id string
+    if req.user and req.user.is_authenticated:
+        return req.user.username
+    else:
+        return None
 
-def identifyCompany(req, res):
-    print('Identify company is called')
-    return 'testpythonapicompany'
-
-def identifyUserOutgoing(req, res):
-    print('Identify user is called')
-    return 'test_outgoing'
-
-def identifyCompanyOutgoing(req, res):
-    print('Identify company is called')
-    return 'company_outgoing'
+def identify_company(req, res):
+    # Your custom code that returns a company id string
+    return '67890'
 
 def should_skip(req, res):
-    print("should skip is called")
-    print("request url is")
-    print(req.path)
-    if "3" in req.path:
-        print("3 is in url, so skipped")
-        return True
-    else:
-        print("3 not in url, so not skipped return false")
-        return False
+    # Your custom code that returns true to skip logging
+    return "/health/probe" in req.path
+
 
 def mask_event(eventmodel):
     return eventmodel
 
 def get_token(req, res):
-    return "token is blah blah blah"
+    # If you don't want to use the standard Django session token,
+    # add your custom code that returns a string for session/API token
+    return "XXXXXXXXXXXXXX"
 
 def get_metadata(req, res):
     return {
-        'foo': 'python1',
-        'bar': [1, 2, 3],
+        'datacenter': 'westus',
+        'deployment_version': 'v1.2.3',
     }
 
-def get_metadata_outgoing(req, res):
-    return {
-        'foo': 'python1 outgoing',
-        'bar': [1, 2, 3],
-    }
 
 MOESIF_MIDDLEWARE = {
-    'APPLICATION_ID': 'your application id goes here',
+    'APPLICATION_ID': 'Your Moesif Application Id',
     'LOCAL_DEBUG': False,
-    'IDENTIFY_USER': identifyUser,
-    'IDENTIFY_COMPANY': identifyCompany,
+    'IDENTIFY_USER': identify_user,
+    'IDENTIFY_COMPANY': identify_company,
     'LOG_BODY': True,
     'GET_SESSION_TOKEN': get_token,
     'SKIP': should_skip,
-    'SKIP_OUTGOING': should_skip,
-    'IDENTIFY_USER_OUTGOING': identifyUserOutgoing,
-    'IDENTIFY_COMPANY_OUTGOING': identifyCompanyOutgoing,
+    'CAPTURE_OUTGOING_REQUESTS': False,
     'MASK_EVENT_MODEL': mask_event,
     'GET_METADATA': get_metadata,
-    'GET_METADATA_OUTGOING': get_metadata,
-    'CAPTURE_OUTGOING_REQUESTS': False,
     'USE_CELERY': False,
     'CELERY_BROKER_URL': BROKER_URL,
-    'BATCH_SIZE': 25,
-    'DISABLE_TRANSACTION_ID' : False
 }
 
 # Internationalization
