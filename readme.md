@@ -19,11 +19,7 @@ the steps for setup Moesif Django. But here is the key file where the Moesif int
 
 1. Setup [virtual env](https://virtualenv.pypa.io/en/stable/) if needed `virtualenv ENV`. Start the virtual env by `source ENV/bin/activate`
 
-2. Install django if you haven't done so. `pip install Django`
-
-3. Install moesifdjango in the environment by `pip install moesifdjango`
-
-4. Install Django Rest Framework by, `pip install djangorestframework`
+2. Install packages. `pip install -r requirements.txt`
 
 5. Be sure to edit the `mysite/setting.py` to add your Moesif application id.
 
