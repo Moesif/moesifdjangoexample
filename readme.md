@@ -2,7 +2,7 @@
 
 Django is a web application framework that many developers to serve APIs.
 
-[Moesif](https://www.moesif.com) is an API analyatics and monitoring platform. [moesifdjango](https://github.com/Moesif/moesifdjango)
+[Moesif](https://www.moesif.com) is an API analytics and monitoring platform. [moesifdjango](https://github.com/Moesif/moesifdjango)
 is a middleware that makes integration with Moesif easy for Django based applications.
 
 This is an example of django application with Moesif integrated. This example is based
