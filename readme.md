@@ -25,7 +25,7 @@ the steps for setup Moesif Django. But here is the key file where the Moesif int
 
   ```python
   MOESIF_MIDDLEWARE = {
-      'APPLICATION_ID': 'your application id from moesif',
+      'APPLICATION_ID': 'Your Moesif Application Id',
   }
   ```
   
@@ -45,23 +45,3 @@ python manage.py runserver
 7. See `urls.py` for some urls that you can hit the server with
 (e.g. `http://localhost:8000/users`), and the data
 should be captured in the corresponding Moesif account of the application id.
-
-## Using Celery (Optional)
-
-If you are already using Celery in your Django application to manage task queueing,
-the `moesifdjango` SDK can also take advantage of the benefits. Do the following steps:
-
-1. Install Redis by, `pip install -U "celery[redis]"`
-
-*Please Note:* If you're using Celery 3.1 or earlier, install celery and redis with `pip install celery==3.1.25` and `pip install redis==2.10.6`
-
-2. If you plan to use celery as the backend of asynchronous delivered logged requests,
-you also need to add `moesifdjango` to your `INSTALLED_APPS`
-
-3. Be sure to set the `USE_CELERY` to `True`
-
-  ```python
-  MOESIF_MIDDLEWARE = {
-      'USE_CELERY': True
-  }
-  ```

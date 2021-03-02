@@ -27,12 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Celery configuration
-BROKER_URL = 'redis://localhost:6379/0'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'moesifdjango',
 ]
 
 # Enable these if you're using Django 1.9
@@ -175,8 +168,6 @@ MOESIF_MIDDLEWARE = {
     'CAPTURE_OUTGOING_REQUESTS': False,
     'MASK_EVENT_MODEL': mask_event,
     'GET_METADATA': get_metadata,
-    'USE_CELERY': False,
-    'CELERY_BROKER_URL': BROKER_URL,
 }
 
 # Internationalization
