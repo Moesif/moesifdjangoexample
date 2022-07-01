@@ -189,4 +189,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Auto Field
+# https://docs.djangoproject.com/en/4.0/ref/models/fields/
+
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
