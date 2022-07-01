@@ -1,6 +1,6 @@
 # Moesif Django Example
 
-Django is a web application framework that many developers to serve APIs.
+Django is a web application framework that many developers use to serve APIs.
 
 [Moesif](https://www.moesif.com) is an API analytics and monitoring platform. [moesifdjango](https://github.com/Moesif/moesifdjango)
 is a middleware that makes integration with Moesif easy for Django based applications.
@@ -17,31 +17,37 @@ the steps for setup Moesif Django. But here is the key file where the Moesif int
 
 ## How to run this example.
 
-1. Setup [virtual env](https://virtualenv.pypa.io/en/stable/) if needed `virtualenv ENV`. Start the virtual env by `source ENV/bin/activate`
+1. Setup [virtual env](https://docs.python.org/3.10/library/venv.html) if needed `python -m venv ENV`. Start the virtual env by `source ENV/bin/activate`
 
-2. Install packages. `pip install -r requirements.txt`
+2. Install packages:
+* Django 3 LTS: `pip install -r requirements.txt`  
+* Django 4: `pip install -r requirements-django4.txt`
 
-5. Be sure to edit the `mysite/setting.py` to add your Moesif application id.
+3. Be sure to edit the `mysite/setting.py` to add your Moesif application id.
 
   ```python
   MOESIF_MIDDLEWARE = {
-      'APPLICATION_ID': 'Your Moesif Application Id',
+      'APPLICATION_ID': 'Your Moesif Collector Application Id',
   }
   ```
   
-Your Moesif Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
+Your Moesif Collector Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
 After signing up for a Moesif account, your Moesif Application Id will be displayed during the onboarding steps. 
 
-You can always find your Moesif Application Id at any time by logging 
-into the [_Moesif Portal_](https://www.moesif.com/), click on the top right menu,
-and then clicking _Installation_.
+You can always find your Moesif Collector Application Id at any time by logging 
+into the [_Moesif Portal_](https://www.moesif.com/), click on the bottom left user profile,
+and then clicking _API Keys_.
 
-6. Run the service:
+4. Run the service:
 
 ```bash
 python manage.py runserver
 ```
 
-7. See `urls.py` for some urls that you can hit the server with
+5. See `urls.py` for some urls that you can hit the server with
 (e.g. `http://localhost:8000/users`), and the data
 should be captured in the corresponding Moesif account of the application id.
+
+
+Tested Python versions: `3.10.4`  
+Tested Django versions: `3.2.13 (LTS)`, `4.0.5`

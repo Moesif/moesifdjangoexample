@@ -215,3 +215,4 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 .idea/
+*/db.sqlite3
