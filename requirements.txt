@@ -1,3 +1,3 @@
-Django==3.2.13
+Django==3.2.15
 moesifdjango==2.1.1
 djangorestframework==3.13.1
