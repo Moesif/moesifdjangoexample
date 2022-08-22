@@ -48,6 +48,11 @@ python manage.py runserver
 (e.g. `http://localhost:8000/users`), and the data
 should be captured in the corresponding Moesif account of the application id.
 
+**Note** : If you get `OperationalError` with Exception Value: `no such table: auth_user`, that means the schema has not been generated in database yet.
+please run the following command line to resolve  
+```bash
+python manage.py migrate
+```
 
 Tested Python versions: `3.10.4`  
 Tested Django versions: `3.2.13 (LTS)`, `4.0.5`
