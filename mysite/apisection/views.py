@@ -1,5 +1,7 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
+from django.views import View
 from rest_framework import viewsets
 from .serializers import UserSerializer, GroupSerializer
 
@@ -18,3 +20,12 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class GovView(View):
+    def get(self, request):
+        # Your logic to generate JSON data
+        data = {'success': True}
+
+        # Return JsonResponse with the data
+        return JsonResponse(data)
