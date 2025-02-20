@@ -20,29 +20,32 @@ the steps for setup Moesif Django. But here is the key file where the Moesif int
 1. Setup [virtual env](https://docs.python.org/3.10/library/venv.html) if needed `python -m venv ENV`. Start the virtual env by `source ENV/bin/activate`
 
 2. Install packages:
-* Django 3 LTS: `pip install -r requirements.txt`  
-* Django 4: `pip install -r requirements-django4.txt`
+   * Django 3 LTS: `pip install -r requirements.txt`  
+   * Django 4: `pip install -r requirements-django4.txt`
 
-3. Be sure to edit the `mysite/setting.py` to add your Moesif application id.
+3. Edit the `mysite/setting.py` to add your Moesif Application ID.
 
-  ```python
-  MOESIF_MIDDLEWARE = {
-      'APPLICATION_ID': 'Your Moesif Collector Application Id',
-  }
-  ```
+    ```python
+    MOESIF_MIDDLEWARE = {
+        'APPLICATION_ID': 'Your Moesif Collector Application Id',
+    }
+    ```
   
-Your Moesif Collector Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
-After signing up for a Moesif account, your Moesif Application Id will be displayed during the onboarding steps. 
+    After you log into [Moesif Portal](https://www.moesif.com/wrap), you can get your Moesif Application ID during the onboarding steps. You can always access the Application ID any time by following these steps from Moesif Portal after logging in:
 
-You can always find your Moesif Collector Application Id at any time by logging 
-into the [_Moesif Portal_](https://www.moesif.com/), click on the bottom left user profile,
-and then clicking _API Keys_.
+    a. Select the account icon to bring up the settings menu.
+    
+    b. Select **Installation** or **API Keys**.
+    
+    c. Copy your Moesif Application ID from the **Collector Application ID** field.
+
+    Also make sure you specify your time zone in [the `TIME_ZONE` setting](https://docs.djangoproject.com/en/4.0/ref/settings/#std-setting-TIME_ZONE) in `mysite/settings.py` file.
 
 4. Run the service:
 
-```bash
-python manage.py runserver
-```
+    ```bash
+    python manage.py runserver
+    ```
 
 5. See `urls.py` for some urls that you can hit the server with
 (e.g. `http://localhost:8000/users`), and the data
@@ -53,35 +56,38 @@ should be captured in the corresponding Moesif account of the application id.
 1. Setup [virtual env](https://docs.python.org/3.10/library/venv.html) if needed `python -m venv ENV`. Start the virtual env by `source ENV/bin/activate`
 
 2. Install packages:
-* Django 3 LTS: `pip install -r requirements.txt`  
-* Django 4: `pip install -r requirements-django4.txt`
+   * Django 3 LTS: `pip install -r requirements.txt`  
+   * Django 4: `pip install -r requirements-django4.txt`
 
-Also install dependencies to related to asgi
+    Also install dependencies to related to asgi
 
-```python
-pip install --no-cache asgi uvicorn gunicorn
-```
+      ```python
+      pip install --no-cache uvicorn gunicorn
+      ```
 
-3. Be sure to edit the `mysite/setting.py` to add your Moesif application id.
+3. Be sure to edit the `mysite/setting.py` to add your Moesif Application ID.
 
-  ```python
-  MOESIF_MIDDLEWARE = {
-      'APPLICATION_ID': 'Your Moesif Collector Application Id',
-  }
-  ```
+    ```python
+    MOESIF_MIDDLEWARE = {
+        'APPLICATION_ID': 'Your Moesif Collector Application Id',
+    }
+    ```
   
-Your Moesif Collector Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
-After signing up for a Moesif account, your Moesif Application Id will be displayed during the onboarding steps. 
+    After you log into [Moesif Portal](https://www.moesif.com/wrap), you can get your Moesif Application ID during the onboarding steps. You can always access the Application ID any time by following these steps from Moesif Portal after logging in:
 
-You can always find your Moesif Collector Application Id at any time by logging 
-into the [_Moesif Portal_](https://www.moesif.com/), click on the bottom left user profile,
-and then clicking _API Keys_.
+    a. Select the account icon to bring up the settings menu.
+    
+    b. Select **Installation** or **API Keys**.
+    
+    c. Copy your Moesif Application ID from the **Collector Application ID** field.
+
+    Also make sure you specify your time zone in the `TIME_ZONE` setting in `mysite/settings.py` file.
 
 4. Run the service:
 
-```bash
-gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
-```
+    ```bash
+    gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
+    ```
 
 5. See `urls.py` for some urls that you can hit the server with
 (e.g. `http://localhost:8000/users`), and the data
@@ -94,5 +100,6 @@ please run the following command line to resolve
 python manage.py migrate
 ```
 
+## Tested Python and Django versions
 Tested Python versions: `3.10.4`  
 Tested Django versions: `3.2.13 (LTS)`, `4.0.5`
