@@ -21,7 +21,7 @@ the steps for setup Moesif Django. But here is the key file where the Moesif int
 
 2. Install packages:
    * Django 3 LTS: `pip install -r requirements.txt`  
-   * Django 4: `pip install -r requirements-django4.txt`
+   * Django 4.2 LTS: `pip install -r requirements-django4.txt`
 
 3. Edit the `mysite/setting.py` to add your Moesif Application ID.
 
@@ -101,5 +101,5 @@ python manage.py migrate
 ```
 
 ## Tested Python and Django versions
-Tested Python versions: `3.10.4`  
-Tested Django versions: `3.2.13 (LTS)`, `4.0.5`
+Tested Python versions: `3.10.4`, `3.12.3`  
+Tested Django versions: `3.2.13` LTS, `4.2.0` LTS
